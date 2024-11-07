@@ -6,10 +6,12 @@ import pokeduxLogo from "./assets/logo.svg";
 import {useEffect, useState} from "react";
 import {getPokemons} from "./Api/index.js";
 import {PokemonCard} from "./Components/PokemonCard/PokemonCard.jsx";
+import {connect} from 'react-redux'
+import {setPokemonsAction} from "./Actions/actions.js";
 
-function App() {
 
-    const [pokemonsList, setPokemonsList] = useState([]);
+function App({pokemonsList, setPokemonsList}) {
+
 
     useEffect(() => {
 
@@ -17,7 +19,6 @@ function App() {
             const pokemonsResults = await getPokemons();
             setPokemonsList(pokemonsResults);
         }
-
 
         fetchPokemonsData();
     }, []);
@@ -46,4 +47,12 @@ function App() {
     )
 }
 
-export default App
+const mapStateToProps =(state) => ({
+    pokemonsList: state.pokemons,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    setPokemonsList: payload => dispatch(setPokemonsAction(payload))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
