@@ -3,8 +3,24 @@ import {Searcher} from "./Components/Searcher.jsx";
 import {Col} from "antd";
 import {PokemonList} from "./Components/PokemonList/PokemonList.jsx";
 import pokeduxLogo from "./assets/logo.svg";
+import {useEffect, useState} from "react";
+import {getPokemons} from "./Api/index.js";
+import {PokemonCard} from "./Components/PokemonCard/PokemonCard.jsx";
 
 function App() {
+
+    const [pokemonsList, setPokemonsList] = useState([]);
+
+    useEffect(() => {
+
+        async function fetchPokemonsData() {
+            const pokemonsResults = await getPokemons();
+            setPokemonsList(pokemonsResults);
+        }
+
+
+        fetchPokemonsData();
+    }, []);
 
     return (
         <div className="App">
@@ -17,7 +33,15 @@ function App() {
                 </Col>
             </header>
 
-            <PokemonList/>
+            <PokemonList
+                pokemonsList={pokemonsList}
+                render={pokemon => (
+                    <PokemonCard
+                        key={pokemon.name}
+                        title={pokemon.name}
+                    />
+                )}
+            />
         </div>
     )
 }

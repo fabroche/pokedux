@@ -2,14 +2,10 @@ import React from 'react';
 import './PokemonList.css'
 import {PokemonCard} from "../PokemonCard/PokemonCard.jsx";
 
-function PokemonList({pokemons}) {
+function PokemonList(props) {
     return (
         <div className='PokemonList'>
-            {pokemons.map(
-                    (pokemon) => {
-                        return <PokemonCard/>
-                    }
-                )}
+            {props && props.pokemonsList.map(props.render)}
         </div>
     );
 }

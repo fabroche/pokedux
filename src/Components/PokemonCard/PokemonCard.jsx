@@ -4,7 +4,7 @@ import Meta from "antd/es/card/Meta.js";
 import {StarOutlined} from "@ant-design/icons";
 import {useEffect, useRef} from "react";
 
-function PokemonCard() {
+function PokemonCard({title}) {
 
     const cardRef = useRef(null);
 
@@ -43,7 +43,7 @@ function PokemonCard() {
     return <Card
         ref={cardRef}
         className='PokemonCard'
-        title="Ditto"
+        title={title}
         cover={<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/132.png" alt="Ditto"/>}
         extra={<StarOutlined className="custom-star-icon"/>}
         headStyle={{background: 'var(--primary-light)', color: 'white'}}
