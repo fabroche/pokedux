@@ -1,0 +1,31 @@
+@import 'antd/dist/reset.css';
+
+:root {
+    /*Color*/
+    --primary: #ff0000;
+    --primary-light: rgba(255,0,0,0.91);
+    --secondary: #434A54;
+    --neutral: #E6E9ED;
+    /*Space*/
+    --gap-section: 64px;
+    --gap-element: 32px;
+}
+
+.baseLayout {
+
+}
+
+.App {
+    padding: 64px 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 64px;
+    view-timeline: --scroll;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}

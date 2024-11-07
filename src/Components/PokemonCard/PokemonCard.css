@@ -1,0 +1,19 @@
+.PokemonCard {
+    width: 100%;
+    min-height: 200px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, scale 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.PokemonCard:hover {
+    scale: 1.05;
+    box-shadow: 4px 4px 24px -16px black;
+}
+
+.custom-star-icon {
+    color: var(--neutral);
+    cursor: pointer;
+    transition: all .3s ease;
+}
