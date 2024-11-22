@@ -5,4 +5,9 @@ async function getPokemons() {
     return response.data.results;
 }
 
-export {getPokemons};
+async function getPokemonDetails(pokemon){
+    const response = await axios.get(pokemon.url);
+    return response.data;
+}
+
+export {getPokemons, getPokemonDetails};

@@ -1,27 +1,16 @@
 import './App.css'
-import {Searcher} from "./Components/Searcher.jsx";
+import {Searcher} from "./Components/Searcher/Searcher.jsx";
 import {Col} from "antd";
 import {PokemonList} from "./Components/PokemonList/PokemonList.jsx";
 import pokeduxLogo from "./assets/logo.svg";
-import {useEffect, useState} from "react";
-import {getPokemons} from "./Api/index.js";
 import {PokemonCard} from "./Components/PokemonCard/PokemonCard.jsx";
-import {connect} from 'react-redux'
-import {setPokemonsAction} from "./Actions/actions.js";
+import {PokemonCardLoading} from "./Components/PokemonCardLoading/PokemonCardLoading.jsx";
+import {usePokemons} from "./Hooks/usePokemons.jsx";
 
 
-function App({pokemonsList, setPokemonsList}) {
+function App() {
 
-
-    useEffect(() => {
-
-        async function fetchPokemonsData() {
-            const pokemonsResults = await getPokemons();
-            setPokemonsList(pokemonsResults);
-        }
-
-        fetchPokemonsData();
-    }, []);
+    const {pokemons, loading} = usePokemons()
 
     return (
         <div className="App">
@@ -30,29 +19,27 @@ function App({pokemonsList, setPokemonsList}) {
                     <img src={pokeduxLogo} alt="Pokedux Logo"/>
                 </Col>
                 <Col span={8} offset={8}>
-                    <Searcher/>
+                    <Searcher loading={loading}/>
                 </Col>
             </header>
-
             <PokemonList
-                pokemonsList={pokemonsList}
-                render={pokemon => (
+                pokemonsList={pokemons}
+                loading={loading}
+                render={(pokemon, index) => (
                     <PokemonCard
                         key={pokemon.name}
                         title={pokemon.name}
+                        cover={pokemon.sprites.front_default}
+                        types={pokemon.types}
+                        index={index + 1}
+                        id={pokemon.id}
+                        favorite={pokemon.favorite}
                     />
                 )}
+                onLoading={(item, index) => <PokemonCardLoading key={index}/>}
             />
         </div>
     )
 }
 
-const mapStateToProps =(state) => ({
-    pokemonsList: state.pokemons,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    setPokemonsList: payload => dispatch(setPokemonsAction(payload))
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App;

@@ -1,0 +1,12 @@
+.custom-star-icon {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.add-favorite-btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+}

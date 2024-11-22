@@ -12,8 +12,16 @@
     box-shadow: 4px 4px 24px -16px black;
 }
 
-.custom-star-icon {
-    color: var(--neutral);
-    cursor: pointer;
-    transition: all .3s ease;
+.types-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+}
+
+.types-list span {
+    padding: 3px 6px;
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
 }

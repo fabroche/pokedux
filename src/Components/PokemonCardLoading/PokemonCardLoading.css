@@ -1,0 +1,17 @@
+.PokemonCard--loading {
+    width: 100%;
+    min-height: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--secondary);
+    animation: loading-skeleton infinite 1.5s;
+    transition: all .3s ease;
+}
+
+@keyframes loading-skeleton {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
