@@ -3,7 +3,6 @@ import {fromJS} from "immutable";
 
 const initialState = fromJS({
     pokemons: [],
-    loading: false,
 })
 
 export const pokemonsReducer = (state = initialState, action) => {
@@ -15,15 +14,6 @@ export const pokemonsReducer = (state = initialState, action) => {
             // };
             return state.setIn(
                 ['pokemons'],
-                fromJS(action.payload)
-            )
-        case actionTypes.SET_LOADING:
-            // return {
-            //     ...state,
-            //     loading: action.payload
-            // }
-            return state.setIn(
-                ['loading'],
                 fromJS(action.payload)
             )
 

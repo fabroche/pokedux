@@ -1,25 +1,30 @@
 import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {getPokemonsDetailsAction, setLoadingAction} from "../Actions/actions.js";
-import {getPokemons} from "../Api/index.js";
+import {shallowEqual, useDispatch, useSelector} from "react-redux";
+import {fetchPokemonsWithDetails} from "../slices/dataSlice.js";
 
 function usePokemons() {
 
-    const pokemons = useSelector(state => state.get('pokemons')).toJS()
-    const loading = useSelector(state => state.get('loading'))
+    const pokemons = useSelector(
+        state => state.data.pokemons, shallowEqual
+    )
+    const loading = useSelector(state => state.ui.loading)
     const dispatch = useDispatch()
 
     useEffect(() => {
 
-        async function fetchPokemonsData() {
-            dispatch(setLoadingAction(true))
-            const pokemonsResults = await getPokemons();
+        // async function fetchPokemonsData() {
+            // Sin Redux Toolkit
+            // dispatch(setLoadingAction(true))
+            // const pokemonsResults = await getPokemons();
+            //
+            // dispatch(getPokemonsDetailsAction(pokemonsResults));
+            // dispatch(setLoadingAction(false))
+        // }
 
-            dispatch(getPokemonsDetailsAction(pokemonsResults));
-            dispatch(setLoadingAction(false))
-        }
+        // fetchPokemonsData();
 
-        fetchPokemonsData();
+        // Con Redux Toolkit
+        dispatch(fetchPokemonsWithDetails())
 
     }, [dispatch]);
 

@@ -7,6 +7,7 @@ import {applyMiddleware, compose, legacy_createStore as createStore} from "redux
 import {pokemonsReducer} from "./Reducers/pokemons.js";
 import {featuring, logger} from "./Middlewares/index.js";
 import {thunk} from "redux-thunk";
+import {rootReducer} from "./Reducers/rootReducer.js";
 
 const composeAlt = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -19,7 +20,7 @@ const composedEnhancers = composeAlt(
 );
 
 const store = createStore(
-    pokemonsReducer,/* preloadedState, */
+    rootReducer,/* preloadedState, */
     composedEnhancers
 )
 

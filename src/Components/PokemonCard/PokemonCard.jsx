@@ -4,7 +4,7 @@ import Meta from "antd/es/card/Meta.js";
 import {useEffect, useRef} from "react";
 import {AddFavoriteButton} from "../AddFavoriteButton/AddFavoriteButton.jsx";
 import {useDispatch} from "react-redux";
-import {setFavorite} from "../../Actions/actions.js";
+import {setFavorite} from "../../slices/dataSlice.js";
 
 function PokemonCard({title, cover, types, index, id, favorite}) {
 
