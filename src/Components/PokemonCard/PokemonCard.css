@@ -1,5 +1,6 @@
 .PokemonCard {
     width: 100%;
+    max-width: 300px;
     min-height: 200px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, scale 0.3s ease;
