@@ -9,5 +9,6 @@ export default defineConfig({
     alias: {
       '@assets': fileURLToPath(new URL('./src/assets', import.meta.url))
     }
-  }
+  },
+  base: "https://fabroche.github.io/pokedux/"
 })
